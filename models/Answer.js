@@ -2,11 +2,11 @@ const mongoose = require('mongoose');
 
 
 const AnswerSchema = mongoose.Schema({
-    eventId: {type: mongoose.Schema.Types.ObjectId, ref: 'Event',  unique : true,},
     submissions: [{
         userId: {type: mongoose.Schema.Types.ObjectId, ref: 'User'},
         answers: [{
             question: String,
+            correctAnswer: String,
             answer: String,
             isCorrect: Boolean
         }],

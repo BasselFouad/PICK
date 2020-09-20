@@ -14,34 +14,8 @@ exports.get = (req, res) => {
 }
 
 
-exports.getByEventIdAndUserId = (req, res) => {
-    Answer.findOne({eventId: req.params.eventId, "submissions.userId": req.params.userId}, {'submissions.$': 1}).lean().exec((err, answersDoc) => {
-        
-        try
-        {
-            if(err)
-            {
-                console.log(err);
-                logger.logError(req, err)
-                return res.status(200).json({success: false, message: "Cannot get submission", submission: null});
-            }
-            if(!answersDoc)
-            {
-                return res.status(200).json({success: false, message: "Got submission", submission: null});
-            }
-            return res.status(200).json({success: true, message: "Got submission", submission: answersDoc.submissions[0]});
-        }
-        catch(err)
-        {
-            console.log(err);
-            logger.logError(req, err)
-            return res.status(200).json({success: false, message: "Cannot get submission", submission: null});
-        }
-       
-    })
-}
 
-exports.getByEventId = (req, res) => {
+exports.getByUserId = (req, res) => {
     Answer.findOne({eventId: req.params.eventId}).lean().exec((err, answersDoc) => {
         if(err)
         {
@@ -68,6 +42,13 @@ exports.getById = (req, res) => {
 
 
 exports.create = (req, res) => {
+    let answersArray = req.body.submissions.answers ;
+    answersArray.forEach( answer => {
+        if(answersArray[i].correctAnswer == answersArray[i].answers){
+            answersArray[i].isCorrect = true 
+        }
+    })
+    req.body.submissions.answers = answersArray ;
     Answer.create(req.body).then(answersDoc => {
         return res.status(200).json({success: true, message: "Answers Doc created successfully", answersDoc: answersDoc});
     }).catch(err => {   

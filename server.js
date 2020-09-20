@@ -18,7 +18,9 @@ const app = express();
 //body parser
 app.use(express.json());
 
-const answers = require('./routes/auth');
+const answers = require('./routes/answers');
+const users = require('./routes/users');
+
 
 
 //body parser
@@ -26,6 +28,8 @@ app.use(express.json());
 
 
 app.use('/api/v1/answers',answers);
+app.use('/api/v1/users',users);
+
 
 app.use(errorHandler);
 
