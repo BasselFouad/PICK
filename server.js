@@ -20,7 +20,7 @@ const app = express();
 app.use(express.json());
 
 const submissions = require('./routes/submissions');
-const users = require('./routes/users');
+// const users = require('./routes/users');
 const questionnaires = require('./routes/questionnaires')
 
 
@@ -29,7 +29,7 @@ app.use(express.json());
 
 
 app.use('/api/v1/submissions',submissions);
-app.use('/api/v1/users',users);
+// app.use('/api/v1/users',users);
 app.use('/api/v1/questionnaires',questionnaires)
 
 app.use(errorHandler);
