@@ -1,14 +1,40 @@
 const mongoose = require('mongoose');
-const Answer = require('./Answer').schema  ;
+const Submission = require('./Submission').schema  ;
+
+const crypto = require('crypto');
+const bcrypt = require('bcryptjs');
+const jwt = require('jsonwebtoken');
 
 
 const UserSchema = new  mongoose.Schema({
-    firstname: String,
-    lastname: String,
-    email: {type: String, unique: true},
-    mobileNumber: String,
-    password: String,
-    answers : [Answer]
+  first_name: {
+    type: String,
+    required: [true, 'Please add a name']
+  },
+  last_name: {
+    type: String,
+    required: [true, 'Please add a name']
+  },
+  email: {
+    type: String,
+    required: [true, 'Please add an email'],
+    unique: true,
+    match: [
+      /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/,
+      'Please add a valid email'
+    ]
+  },
+  phone_number: {
+    type: String,
+    required: true 
+  },
+  password: {
+    type: String,
+    required: [true, 'Please add a password'],
+    minlength: 6,
+    select: false
+  },
+  submissions: [Submission]
   
 },
 {
@@ -16,14 +42,14 @@ const UserSchema = new  mongoose.Schema({
 });
 
 //encrypt password using brcypt
-UserSchema.pre('save', async function(next) {
-    if (!this.isModified('password')) {
-      next();
-    }
+// UserSchema.pre('save', async function(next) {
+//     if (!this.isModified('password')) {
+//       next();
+//     }
   
-    const salt = await bcrypt.genSalt(10);
-    this.password = await bcrypt.hash(this.password, salt);
-  });
+//     const salt = await bcrypt.genSalt(10);
+//     this.password = await bcrypt.hash(this.password, salt);
+//   });
 
 //Sign JWT ant Return
 UserSchema.methods.getSignedJwtToken = function(){
