@@ -1,0 +1,69 @@
+{
+  "project_info": {
+    "project_number": "459858409798",
+    "firebase_url": "https://nichepharma-notofications.firebaseio.com",
+    "project_id": "nichepharma-notofications",
+    "storage_bucket": "nichepharma-notofications.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:459858409798:android:037906f46b0faf923acd47",
+        "android_client_info": {
+          "package_name": "com.example.piq"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "459858409798-ivso3e0ojho1h2ksnf6a761skb493jdh.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDnhkYNO-U0D1-LljhNHvWATbG0m6cY2gc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "459858409798-ivso3e0ojho1h2ksnf6a761skb493jdh.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:459858409798:android:629ffa1a5ae943ce3acd47",
+        "android_client_info": {
+          "package_name": "com.tacitapp.carrier"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "459858409798-ivso3e0ojho1h2ksnf6a761skb493jdh.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDnhkYNO-U0D1-LljhNHvWATbG0m6cY2gc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "459858409798-ivso3e0ojho1h2ksnf6a761skb493jdh.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

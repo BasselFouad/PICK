@@ -31,7 +31,7 @@ exports.getQuestionnaire = asyncHandler( async(req, res, next)=>{
 
 exports.createQuestionnaire = asyncHandler( async(req, res, next)=>{
     
-    const questionnaire = await Questionnaire.create({});
+    const questionnaire = await Questionnaire.create(req.body);
     res.status(201).json({
         success:true,
         data:questionnaire
