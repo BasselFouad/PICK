@@ -1,6 +1,7 @@
 const ErrorResponse = require('../utils/errorResponse');
 const asyncHandler = require('../middleware/async');
 const Questionnaire = require('../models/Questionnaire'); 
+const mongoose = require('mongoose')
 
 
 //desc Get all questionnaires 
@@ -62,5 +63,37 @@ exports.deleteQuestionnaire = asyncHandler( async(req, res, next)=>{
     res.status(200).json({
         success:true,
         data:{}
+    })
+})
+
+exports.getTopFive = asyncHandler( async(req, res, next)=>{
+
+    const ObjectId = mongoose.Types.ObjectId
+    let sortedSubmissions =  await Questionnaire.aggregate([
+        {
+            $match : {
+                '_id' : ObjectId(req.params.id)
+            }
+        },
+        {
+            $unwind : '$submissions'
+        },
+        {
+            $sort : {
+                'submissions.percentage' : -1
+            }
+        },
+        {
+            $project : {
+                'submissions.userId' : 1 ,
+                'submissions.percentage' : 1
+            }
+        }
+    ]
+    )
+
+    res.status(200).json({
+        success:true,
+        data: sortedSubmissions
     })
 })
