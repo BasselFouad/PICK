@@ -1,12 +1,13 @@
 const FirebaseAdmin = require("firebase-admin");
 
-const serviceAccount = require("../../tacitapp-57fee-firebase-adminsdk-9ohjd-0a93a21106.json"); 
+const serviceAccount = require("../nichepharma-notofications-firebase-adminsdk-b7z3a-8dce354262.json");
 
 FirebaseAdmin.initializeApp({
     credential: FirebaseAdmin.credential.cert(serviceAccount),
-    databaseURL: "https://tacitapp-57fee.firebaseio.com"
+    databaseURL: "https://nichepharma-notofications.firebaseio.com"
   });
 
+ 
 exports.sendNotification = (topic, data) => {
     const message = {
         notification: {
